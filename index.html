@@ -14,7 +14,7 @@
         <main class="main">
             <span id="hex-code">None</span>
             <!-- Controls -->
-            <form class="form" id="color-picker-form">
+            <form class="form" id="color-scheme-form">
                 <input class="form__color-picker" 
                        type="color" 
                        name="color-picker" 
@@ -23,32 +23,32 @@
                        aria-label="Select a color"
                 >
                 <select class="form__select" name="color-mode-select" id="color-mode-select">
-                    <option class="form__option">Monochrome</option>
-                    <option class="form__option">Monochrome-dark</option>
-                    <option class="form__option">Monochrome-light</option>
-                    <option class="form__option">Analogic</option>
-                    <option class="form__option">Complement</option>
-                    <option class="form__option">Analogic-complement</option>
-                    <option class="form__option">Triad</option>
-                    <option class="form__option">Quad</option>
+                    <option class="form__option" value="monochrome">Monochrome</option>
+                    <option class="form__option" value="monochrome-dark">Monochrome-dark</option>
+                    <option class="form__option" value="monochrome-light">Monochrome-light</option>
+                    <option class="form__option" value="analogic">Analogic</option>
+                    <option class="form__option" value="complement">Complement</option>
+                    <option class="form__option" value="analogic-complement">Analogic-complement</option>
+                    <option class="form__option" value="triad">Triad</option>
+                    <option class="form__option" value="quad">Quad</option>
                 </select>
-                <button class="form__button" type="button" id="btn-get-scheme">Get color scheme</button>
+                <button class="form__button" type="submit" id="btn-get-scheme">Get color scheme</button>
             </form>
             
             <!-- Generated palette -->
             <section class="color-scheme">
                 <!-- Palette laid out with grid -->
                 <ul class="palette">
-                    <li class="palette__bar"></li>
-                    <li class="palette__bar"></li>
-                    <li class="palette__bar"></li>
-                    <li class="palette__bar"></li>
-                    <li class="palette__bar"></li>
-                    <li class="palette__code">#F55A5A</li>
-                    <li class="palette__code">#2B283A</li>
-                    <li class="palette__code">#2B283A</li>
-                    <li class="palette__code">#2B283A</li>
-                    <li class="palette__code">#A626D3</li>
+                    <li class="palette__bar" data-bar="0"></li>
+                    <li class="palette__bar" data-bar="1"></li>
+                    <li class="palette__bar" data-bar="2"></li>
+                    <li class="palette__bar" data-bar="3"></li>
+                    <li class="palette__bar" data-bar="4"></li>
+                    <li class="palette__code" data-code="0">#F55A5A</li>
+                    <li class="palette__code" data-code="1">#2B283A</li>
+                    <li class="palette__code" data-code="2">#2B283A</li>
+                    <li class="palette__code" data-code="3">#2B283A</li>
+                    <li class="palette__code" data-code="4">#A626D3</li>
                 </ul>
             </section>
         </main>
