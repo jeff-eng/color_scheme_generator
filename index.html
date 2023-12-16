@@ -4,10 +4,52 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Color Scheme Generator</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
         <link rel="stylesheet" href="index.css">
     </head>
     <body>
-        
+        <main class="main">
+            <!-- Controls -->
+            <section class="user-controls">
+                <input class="color-picker" 
+                       type="color" 
+                       name="color-picker" 
+                       id="color-picker" 
+                       value="#F55A5A" 
+                       aria-label="Select a color"
+                >
+                <select class="select" name="" id="">
+                    <option class="select__option">Monochrome</option>
+                    <option class="select__option">Monochrome-dark</option>
+                    <option class="select__option">Monochrome-light</option>
+                    <option class="select__option">Analogic</option>
+                    <option class="select__option">Complement</option>
+                    <option class="select__option">Analogic-complement</option>
+                    <option class="select__option">Triad</option>
+                    <option class="select__option">Quad</option>
+                </select>
+                <button type="button" id="btn-get-scheme">Get color scheme</button>
+            </section>
+            
+            <!-- Generated palette -->
+            <section class="color-scheme">
+                <!-- Palette laid out with grid -->
+                <ul class="palette">
+                    <li class="palette__bar"></li>
+                    <li class="palette__bar"></li>
+                    <li class="palette__bar"></li>
+                    <li class="palette__bar"></li>
+                    <li class="palette__bar"></li>
+                    <li class="palette__code">#F55A5A</li>
+                    <li class="palette__code">#2B283A</li>
+                    <li class="palette__code">#2B283A</li>
+                    <li class="palette__code">#2B283A</li>
+                    <li class="palette__code">#A626D3</li>
+                </ul>
+            </section>
+        </main>
     </body>
 </html>
