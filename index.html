@@ -8,31 +8,32 @@
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.css">
-        <link rel="stylesheet" href="index.css">
+        <link rel="stylesheet" href="styles/index.css">
     </head>
     <body>
         <main class="main">
+            <span id="hex-code">None</span>
             <!-- Controls -->
-            <section class="user-controls">
-                <input class="color-picker" 
+            <form class="form" id="color-picker-form">
+                <input class="form__color-picker" 
                        type="color" 
                        name="color-picker" 
                        id="color-picker" 
                        value="#F55A5A" 
                        aria-label="Select a color"
                 >
-                <select class="select" name="" id="">
-                    <option class="select__option">Monochrome</option>
-                    <option class="select__option">Monochrome-dark</option>
-                    <option class="select__option">Monochrome-light</option>
-                    <option class="select__option">Analogic</option>
-                    <option class="select__option">Complement</option>
-                    <option class="select__option">Analogic-complement</option>
-                    <option class="select__option">Triad</option>
-                    <option class="select__option">Quad</option>
+                <select class="form__select" name="color-mode-select" id="color-mode-select">
+                    <option class="form__option">Monochrome</option>
+                    <option class="form__option">Monochrome-dark</option>
+                    <option class="form__option">Monochrome-light</option>
+                    <option class="form__option">Analogic</option>
+                    <option class="form__option">Complement</option>
+                    <option class="form__option">Analogic-complement</option>
+                    <option class="form__option">Triad</option>
+                    <option class="form__option">Quad</option>
                 </select>
-                <button type="button" id="btn-get-scheme">Get color scheme</button>
-            </section>
+                <button class="form__button" type="button" id="btn-get-scheme">Get color scheme</button>
+            </form>
             
             <!-- Generated palette -->
             <section class="color-scheme">
@@ -51,5 +52,6 @@
                 </ul>
             </section>
         </main>
+        <script type="module" src="js/index.js"></script>
     </body>
 </html>
