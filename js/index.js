@@ -15,6 +15,15 @@ colorSchemeForm.addEventListener('submit', (event) => {
 
 });
 
+document.addEventListener('click', (event) => {
+    const clickedEl = event.target;
+    // Make sure clicked element has data attribute 'bar'
+    if (clickedEl.dataset.bar) {
+        const hexCode = event.target.dataset.hexCode;
+        copyToClipboard(hexCode);
+    }
+});
+
 function getColorScheme(url) {
     // Make fetch request to Color API
     fetch(url)
@@ -34,6 +43,16 @@ function renderColors(colorsArray) {
         const colorHexCode = colorObj.hex.value;
 
         paletteBarListItems[index].style.backgroundColor = colorHexCode;
+        paletteBarListItems[index].dataset.hexCode = colorHexCode;
         paletteCodeListItems[index].textContent = colorHexCode;
     });
+}
+
+function copyToClipboard(colorHexCode) {
+    if (!colorHexCode) {
+        return;
+    }
+
+    // Copy hex code to clipboard
+    navigator.clipboard.writeText(colorHexCode);
 }
