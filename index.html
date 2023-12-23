@@ -4,6 +4,7 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Color Scheme Generator</title>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
         <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
@@ -38,11 +39,21 @@
             <section class="color-scheme">
                 <!-- Palette laid out with grid -->
                 <ul class="grid palette">
-                    <li class="palette__bar" data-bar="0"></li>
-                    <li class="palette__bar" data-bar="1"></li>
-                    <li class="palette__bar" data-bar="2"></li>
-                    <li class="palette__bar" data-bar="3"></li>
-                    <li class="palette__bar" data-bar="4"></li>
+                    <li class="palette__bar" data-bar="0" data-hex-code="#F55A5A" aria-label="Color: #F55A5A">
+                        <i class="fa-regular fa-clone copy"></i>
+                    </li>
+                    <li class="palette__bar" data-bar="1" data-hex-code="#2B283A" aria-label="Color: #2B283A">
+                        <i class="fa-regular fa-clone copy"></i>
+                    </li>
+                    <li class="palette__bar" data-bar="2" data-hex-code="#FBF3AB" aria-label="Color: #FBF3AB">
+                        <i class="fa-regular fa-clone copy"></i>
+                    </li>
+                    <li class="palette__bar" data-bar="3" data-hex-code="#AAD1B6" aria-label="Color: #AAD1B6">
+                        <i class="fa-regular fa-clone copy"></i>
+                    </li>
+                    <li class="palette__bar" data-bar="4" data-hex-code="#A626D3" aria-label="Color: #A626D3">
+                        <i class="fa-regular fa-clone copy"></i>
+                    </li>
                     <li class="palette__code" data-code="0">#F55A5A</li>
                     <li class="palette__code" data-code="1">#2B283A</li>
                     <li class="palette__code" data-code="2">#FBF3AB</li>
@@ -51,6 +62,7 @@
                 </ul>
             </section>
         </main>
+        <div class="hide" id="clipboard-alert">Copied to Clipboard!</div>
         <script type="module" src="js/index.js"></script>
     </body>
 </html>
