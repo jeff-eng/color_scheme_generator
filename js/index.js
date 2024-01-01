@@ -1,9 +1,17 @@
+import Select from './select.js';
+
 const BASE_URL = 'https://www.thecolorapi.com/scheme?';
 const colorSchemeForm = document.getElementById('color-scheme-form');
 
 let copiedToClipboard = false;
 
-colorSchemeForm.addEventListener('submit', (event) => {
+const selectElements = document.querySelectorAll('[data-custom]');
+
+selectElements.forEach(selectElement => {
+    new Select(selectElement);
+});
+
+colorSchemeForm.addEventListener('submit', event => {
     event.preventDefault();
 
     // Get FormData object
@@ -11,12 +19,11 @@ colorSchemeForm.addEventListener('submit', (event) => {
 
     const selectedColorHexCode = formData.get('color-picker').slice(1).toUpperCase();
     const selectedMode = formData.get('color-mode-select');
-
     const completeUrl = `${BASE_URL}hex=${selectedColorHexCode}&mode=${selectedMode}`;
     fetchColorScheme(completeUrl);
 });
 
-document.addEventListener('click', (event) => {
+document.addEventListener('click', event => {
     const clickedEl = event.target;
     // Make sure clicked element has data attribute 'bar'
     if (clickedEl.dataset.bar) {

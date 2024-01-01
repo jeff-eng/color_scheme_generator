@@ -47,9 +47,7 @@ function setupCustomElement(select) {
     select.customElement.classList.add('custom-select-container');
     // Have JS make div focus-able
     select.customElement.tabIndex = 0;
-
     select.iconElement.classList.add('fa-solid', 'fa-chevron-down');
-
     select.labelElement.classList.add('custom-select-value');
 
     select.labelElement.innerText = capitalize(select.selectedOption.value);
@@ -60,19 +58,30 @@ function setupCustomElement(select) {
     select.options.forEach(option => {
         // Create option
         const optionElement = document.createElement('li');
+        const checkedIconElement = document.createElement('i');
+        optionElement.innerText = option.label;
+        checkedIconElement.classList.add('fa-solid', 'fa-check');
+        checkedIconElement.classList.toggle('checked', option.selected);
+
+        optionElement.append(checkedIconElement);
+
         optionElement.classList.add('custom-select-option');
         optionElement.classList.toggle('selected', option.selected);
-        optionElement.innerText = option.label;
         optionElement.dataset.value = option.value;
-        optionElement.addEventListener('click', () => {
+        
+        // Set event listeners on each option
+        optionElement.addEventListener('click', event => {
             select.optionsCustomElement
                 .querySelector(`[data-value="${select.selectedOption.value}"]`)
                 .classList.remove('selected');
 
-            select.selectedOption.element.classList.remove('selected');
+            document.querySelectorAll('.fa-solid.fa-check').forEach(icon => {
+                icon.classList.remove('checked');
+            });
+
+            event.target.lastChild.classList.add('checked');
             select.selectValue(option.value);
-            
-            select.optionsCustomElement.classList.remove('show');
+            select.optionsCustomElement.classList.toggle('show', option.selected);
         });
 
         // Add option to select
@@ -80,7 +89,7 @@ function setupCustomElement(select) {
     })
     select.customElement.append(select.optionsCustomElement);
 
-    select.labelElement.addEventListener('click', () => {
+    select.customElement.addEventListener('click', () => {
         select.optionsCustomElement.classList.toggle('show');
     });
 
@@ -88,6 +97,7 @@ function setupCustomElement(select) {
         select.optionsCustomElement.classList.remove('show');
     });
 
+    // Variables for search functionality within custom select element
     let debounceTimeout;
     let searchString = '';
 
@@ -101,14 +111,18 @@ function setupCustomElement(select) {
                 if (prevOption) {
                     select.selectValue(prevOption.value);
                 }
+                setCheckOnSelectedOption(select, false);
                 break;
             case 'ArrowDown':
                 const nextOption = select.options[select.selectedOptionIndex + 1];
                 if (nextOption) {
                     select.selectValue(nextOption.value);
                 }
+                setCheckOnSelectedOption(select, false);
                 break;
             case 'Enter':
+                setCheckOnSelectedOption(select, true);
+                break;
             case 'Escape':
                 select.optionsCustomElement.classList.remove('show');
                 break;
@@ -130,6 +144,17 @@ function setupCustomElement(select) {
     });
 }
 
+function setCheckOnSelectedOption(select, dismissDropdown) {
+    // Hide all check icons
+    document.querySelectorAll('.fa-solid.fa-check').forEach(icon => icon.classList.remove('checked'));
+    // Get selected option 
+    const selectedOptionElement = document.querySelectorAll('.custom-select-option')[select.selectedOptionIndex];
+    // Add checked class to selected option to show check
+    selectedOptionElement.lastChild.classList.toggle('checked');
+    // Show/hide options
+    dismissDropdown ? select.optionsCustomElement.classList.remove('show') : select.optionsCustomElement.classList.add('show');
+}
+
 function getFormattedOptions(optionElements) {
     return [...optionElements].map(optionElement => {
         // Create object
@@ -142,6 +167,6 @@ function getFormattedOptions(optionElements) {
     });
 }
 
-function capitalize(str) {
-    return `${str[0].toUpperCase()}${str.slice(1)}`; 
+function capitalize(textString) {
+    return `${textString[0].toUpperCase()}${textString.slice(1)}`; 
 }
