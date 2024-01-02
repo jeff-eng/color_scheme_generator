@@ -1,5 +1,7 @@
 :root {
     --white: #FFF;
+    --picker-border-color: #D1D5DB;
+    --picker-border-color-focus: #494c51;
 }
 
 /* CSS reset */
@@ -47,10 +49,10 @@ li {
     height: 2.625em;
     border: none;
     background: #E5E5E5;   
-    border-left: 5px solid #D1D5DB;
-    border-right: 5px solid #D1D5DB;
-    border-top: 4px solid #D1D5DB;
-    border-bottom: 4px solid #D1D5DB;
+    border-left: 5px solid var(--picker-border-color);
+    border-right: 5px solid var(--picker-border-color);
+    border-top: 4px solid var(--picker-border-color);
+    border-bottom: 4px solid var(--picker-border-color);
 } 
 
 input[type="color"]::-moz-color-swatch {
@@ -70,10 +72,10 @@ input[type="color"]::-webkit-color-swatch {
 }
 
 .form__color-picker:focus {
-    border-left: 5px solid #494c51;
-    border-right: 5px solid #494c51;
-    border-top: 4px solid #494c51;
-    border-bottom: 4px solid #494c51;
+    border-left: 5px solid var(--picker-border-color-focus);
+    border-right: 5px solid var(--picker-border-color-focus);
+    border-top: 4px solid var(--picker-border-color-focus);
+    border-bottom: 4px solid var(--picker-border-color-focus);
 }
 
 .form__select {
@@ -82,7 +84,7 @@ input[type="color"]::-webkit-color-swatch {
     color: var(--gray-900, #111827);
     padding: 0.5625em 1em 0.5625em 0.8125em;
     border-radius: 0.375em;
-    background: var(--white, #FFF);
+    background: var(--white);
     line-height: 1.5em;
     min-width: 312px;
 }
@@ -93,7 +95,7 @@ input[type="color"]::-webkit-color-swatch {
     line-height: 1.333em;
     color: var(--gray-700, #374151);
     padding: 1.083em 0.917em;
-    background: var(--white, #FFF);
+    background: var(--white);
     border-radius: 0.333em;
     transition: 0.5s ease-in-out;
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
@@ -113,7 +115,7 @@ input[type="color"]::-webkit-color-swatch {
     box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
 }
 
-/* Color bar initial colors */
+/* Color bar initial styling */
 li[data-bar="0"],
 li[data-bar="1"],
 li[data-bar="2"],
@@ -171,16 +173,6 @@ li[data-bar="4"] {
     visibility: visible;
 } 
 
-.copy {
-    font-size: 2em;
-    box-shadow: 0px 0px 20px 0px #00000026;
-    background-color: rgba(146, 140, 143, 0.34);
-    padding: 0.25em;
-    border-radius: 15%;
-    color: var(--white);
-    visibility: hidden;
-}
-
 .palette__code {
     font-size: 0.75rem;
     color: #2B283A;
@@ -195,13 +187,25 @@ li[data-bar="4"] {
     height: 100%;
 }
 
+/* Copy icon */
+.copy {
+    font-size: 2em;
+    box-shadow: 0px 0px 20px 0px #00000026;
+    background-color: rgba(146, 140, 143, 0.34);
+    padding: 0.25em;
+    border-radius: 15%;
+    color: var(--white);
+    visibility: hidden;
+}
+
+/* Copy to clipboard element styling/animation */
 .clipboard-alert {
     position: fixed;
     font-weight: 600;
     bottom: -100px;
     left: 50%;
     width: max-content;
-    padding: 15px 20px;
+    padding: 0.938em 1.25em;
     background-color: #2B283A;
     color: var(--white);
     border-radius: 40px;
