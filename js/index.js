@@ -27,7 +27,7 @@ colorSchemeForm.addEventListener('submit', event => {
     throttledFetch(completeUrl);
 });
 
-document.addEventListener('click', event => {
+document.getElementById('palette').addEventListener('click', event => {
     const clickedEl = event.target;
     // Make sure clicked element has data attribute 'bar'
     if (clickedEl.dataset.bar) {
@@ -36,6 +36,8 @@ document.addEventListener('click', event => {
     } else if (clickedEl.parentElement.dataset.bar) {
         const hexCode = clickedEl.parentElement.dataset.hexCode;
         copyToClipboard(hexCode);
+    } else {
+        return;
     }
 });
 
