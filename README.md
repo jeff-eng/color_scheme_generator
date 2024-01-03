@@ -1,6 +1,6 @@
 # Color Scheme Generator
 
-Color Scheme Generator uses The Color API to get a color scheme based on a single seed color and specified mode. Each color is displayed along with the corresponding hex code. Other functionality include copy-to-clipboard feature to make it easier to
+Color Scheme Generator uses The Color API to get a color scheme based on a single seed color and specified mode. Each color is displayed along with the corresponding hex code. Other functionality include copy-to-clipboard feature to allow user to take the hex code directly from the Color Scheme Generator for use in another project.
 
 ## Table of contents
 
