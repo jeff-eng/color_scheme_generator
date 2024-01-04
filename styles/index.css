@@ -1,0 +1,245 @@
+:root {
+    --white: #FFF;
+    --picker-border-color: #D1D5DB;
+    --picker-border-color-focus: #494c51;
+}
+
+/* CSS reset */
+*, 
+*:before, 
+*:after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+li {
+    list-style: none;
+}
+
+/* User controls */
+.form {
+    display: flex;
+    justify-content: center;
+    padding: 1.44em 0.94em 1.56em 0.87em;
+    box-shadow: 0px 4px 11px 0px rgba(0, 0, 0, 0.15);
+    gap: 13px;
+}
+
+.form__color-picker, 
+.form__select, 
+.form__button {
+    cursor: pointer;
+}
+
+.form__color-picker {
+    box-sizing: border-box;
+    min-width: 3.813em;
+    height: 2.625em;
+    border: none;
+    background: #E5E5E5;   
+    border-left: 5px solid var(--picker-border-color);
+    border-right: 5px solid var(--picker-border-color);
+    border-top: 4px solid var(--picker-border-color);
+    border-bottom: 4px solid var(--picker-border-color);
+} 
+
+input[type="color"]::-moz-color-swatch {
+    border: none;
+  }
+
+input[type="color"] {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch-wrapper {
+    padding: 0;
+}
+
+input[type="color"]::-webkit-color-swatch {
+    border: none;
+}
+
+.form__color-picker:focus {
+    border-left: 5px solid var(--picker-border-color-focus);
+    border-right: 5px solid var(--picker-border-color-focus);
+    border-top: 4px solid var(--picker-border-color-focus);
+    border-bottom: 4px solid var(--picker-border-color-focus);
+}
+
+.form__select {
+    font-size: 1rem;
+    font-weight: 400;
+    color: var(--gray-900, #111827);
+    padding: 0.5625em 1em 0.5625em 0.8125em;
+    border-radius: 0.375em;
+    background: var(--white);
+    line-height: 1.5em;
+    min-width: 312px;
+}
+
+.form__button {
+    font-size: 0.75rem;
+    font-weight: 500;
+    line-height: 1.333em;
+    color: var(--gray-700, #374151);
+    padding: 1.083em 0.917em;
+    background: var(--white);
+    border-radius: 0.333em;
+    transition: 0.5s ease-in-out;
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+    min-width: 123px;
+    white-space: nowrap;
+}
+
+.form__button:hover {
+    box-shadow: 0px 1px 2px 0px #D1D5DB;
+    background-color: #374151;
+    color: var(--white);
+}
+
+.form__button, 
+.form__select {
+    border: 1px solid var(--gray-300, #D1D5DB);
+    box-shadow: 0px 1px 2px 0px rgba(0, 0, 0, 0.05);
+}
+
+/* Color bar initial styling */
+li[data-bar="0"],
+li[data-bar="1"],
+li[data-bar="2"],
+li[data-bar="3"],
+li[data-bar="4"] {
+    width: 100%;
+    height: 100%;
+    margin: auto;
+    overflow-x: hidden;
+}
+
+li[data-bar="0"] {
+    background-color: #F55A5A;
+    z-index: 0;
+}
+
+li[data-bar="1"] {
+    background-color: #2B283A;
+}
+
+li[data-bar="2"] {
+    background-color: #FBF3AB;
+}
+
+li[data-bar="3"] {
+    background-color: #AAD1B6;
+}
+
+li[data-bar="4"] {
+    background-color: #A626D3;
+}
+
+.palette {
+    grid-template-columns: repeat(5, minmax(6.875em, 100%));
+    grid-template-rows: 10fr 1fr;
+}
+
+.palette__bar {
+    transition: ease;
+    transition-duration: 0.25s;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.palette__bar:hover {
+    cursor: pointer;
+    box-shadow: 0px 0px 20px 0px #00000026;
+    border-radius: 0.3em 0.3em 0 0;
+    transform: scaleY(1.03);
+    transform-origin: bottom;
+}
+
+.palette__bar:hover > .copy {
+    visibility: visible;
+} 
+
+.palette__code {
+    font-size: 0.75rem;
+    color: #2B283A;
+    font-weight: 500;
+    text-align: center;
+    line-height: 2em;
+    padding-top: 0.917em;
+    padding-bottom: 0.917em;
+}
+
+.color-scheme {
+    height: 100%;
+}
+
+/* Copy icon */
+.copy {
+    font-size: 2em;
+    box-shadow: 0px 0px 20px 0px #00000026;
+    background-color: rgba(146, 140, 143, 0.34);
+    padding: 0.25em;
+    border-radius: 15%;
+    color: var(--white);
+    visibility: hidden;
+}
+
+/* Copy to clipboard element styling/animation */
+.clipboard-alert {
+    position: fixed;
+    font-weight: 600;
+    bottom: -100px;
+    left: 50%;
+    width: max-content;
+    padding: 0.938em 1.25em;
+    background-color: #2B283A;
+    color: var(--white);
+    border-radius: 40px;
+    box-shadow: 0px 0px 15px 0px rgba(0, 0, 0, 0.15);
+    animation-name: notification;
+    animation-duration: 3s;
+    transform: translateX(-50%);
+}
+
+@keyframes notification {
+    0% {
+        opacity: 0%;
+    }
+
+    15% {
+        opacity: 100%;
+        bottom: 30vh;
+    }
+
+    80% {
+        opacity: 100%;
+        bottom: 30vh;
+    }
+
+    100% {
+        opacity: 50%;
+    }
+}
+
+/* Utility classes */
+.grid {
+    display: grid;
+}
+
+.hide {
+    visibility: hidden;
+}
