@@ -136,7 +136,7 @@ During this project, I was also able to implement a notification to copy the hex
 - Accessibility improvements
 - Layouts for smaller screens
 - Displaying the color name provided by the API
-
+- Variable generated colors (currently only five)
 
 ### Useful resources
 
@@ -159,5 +159,5 @@ During this project, I was also able to implement a notification to copy the hex
 
 ## Author
 
-- Portfolio Site - [Jeff Eng](https://www.jeffeng.com)
+- [Jeff Eng](https://www.jeffeng.com)
 - X (formerly Twitter) - [@elev8eng](https://www.twitter.com/elev8eng)
